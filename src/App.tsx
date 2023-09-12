@@ -1,11 +1,17 @@
 import React from 'react';
-import Categoria from './componentes/Categoria';
-
-
+import Categoria from './components/Categoria';
+import { Container, Row } from 'react-bootstrap'
+import Cabecalho from './components/Cabecalho';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <Categoria/>
+    <>
+      <Cabecalho/>
+    <Container>
+      <Categoria/>
+    </Container>
+    </>
   );
 }
 
