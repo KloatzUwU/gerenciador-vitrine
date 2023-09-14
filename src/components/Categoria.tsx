@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import BotaoRemover from './BotaoRemover';
 import BotaoEditar from './BotaoEditar';
+import axios from 'axios';
 
 interface CategoriaItem {
     id: number;
@@ -20,6 +21,12 @@ export default function Categoria() {
                 setCategoria(resultado);
             });
     }, []);
+
+    function ExcluirCategoria(id: number){
+         axios.delete(`http://64.226.114.207:3334/categories/${id}`)
+        
+        setCategoria(categoria.filter(categoriaItem => categoriaItem.id !== id))
+      }
 
     return (
         <>
@@ -44,7 +51,7 @@ export default function Categoria() {
                    
                     <div style={{paddingRight: '12px'}}>
                         <BotaoEditar/>
-                        <BotaoRemover/>
+                        <BotaoRemover onClick={ExcluirCategoria} categoriaId={categoriaItem.id}/>
                     </div>
                 </div>
                 
