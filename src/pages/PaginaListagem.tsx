@@ -17,7 +17,6 @@ export default function PaginaListagem() {
               </Link> 
             </Col>
           </Row>
-          {/* Criar um unico componente de botao, passando sua classe para identificar sua funçao */}
       </Container>
     </>
   )

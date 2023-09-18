@@ -8,6 +8,5 @@ interface BotaoCriarProps {
 export default function BotaoCriar({ children, size }:BotaoCriarProps) {
   return (
      <Button type='submit' variant="dark" size={size}>{children}</Button>
-     // Criar um unico componente de botao, passando sua classe para identificar sua funçao
   )
 }

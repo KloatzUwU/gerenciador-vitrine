@@ -10,6 +10,5 @@ export default function BotaoRemover({ onClick, categoriaId }: BotaoRemoverProps
 
   return (
     <Button  onClick={() => onClick(categoriaId)}  size="sm" variant="danger">Remover</Button>
-    // Criar um unico componente de botao, passando sua classe para identificar sua funçao
   )
 }
