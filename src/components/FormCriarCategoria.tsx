@@ -74,7 +74,7 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit}> 
             <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh'}}>
-                <Col md={4} style={{border: 'solid', padding: '30px', borderColor: '#CBC3E3', justifyContent: 'center', backgroundColor: '#E6E6FA'}}>
+                <Col md={4} style={{border: 'dashed', padding: '30px', borderColor: '#FA8072', justifyContent: 'center', marginBottom: '250px'}}>
                     <h3 style={{textAlign: 'center', marginBottom: '15px'}} >Criar Categoria</h3>
                     <Form.Group controlId="validationCustom01">
                         <FloatingLabel
@@ -97,11 +97,10 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
                         </FloatingLabel>
                     </Form.Group>
                     <div style={{marginTop: '15px', display: 'flex', justifyContent: 'center'}}>
-                    
-                    <Link to='/'>
-                    <Button style={{marginRight: '20px'}} size='sm' variant='danger'>Cancelar</Button>
+                    <Link to='/listagem'>
+                    <Button style={{marginRight: '20px'}}  variant='outline-danger'>Cancelar</Button>
                     </Link>
-                    <BotaoCriar size='sm'>Criar</BotaoCriar>
+                    <BotaoCriar >Criar</BotaoCriar>
                     </div>
                 </Col>
             </Row>

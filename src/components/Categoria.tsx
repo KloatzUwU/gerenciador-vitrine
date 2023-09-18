@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import BotaoRemover from './BotaoRemover';
 import BotaoEditar from './BotaoEditar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 interface CategoriaItem {
     id: number;
@@ -28,6 +29,11 @@ export default function Categoria() {
         setCategoria(categoria.filter(categoriaItem => categoriaItem.id !== id))
       }
 
+    function EditarCategoria(id: number){
+        console.log(id);
+        
+    }
+
     return (
         <>
             {categoria.map(categoriaItem => (
@@ -49,8 +55,10 @@ export default function Categoria() {
                         {categoriaItem.alias}
                     </div>
                    
-                    <div style={{paddingRight: '12px'}}>
-                        <BotaoEditar/>
+                    <div style={{paddingRight: '12px'}}> 
+                        <Link to={`/editar/${categoriaItem.id}`}>
+                            <BotaoEditar onClick={EditarCategoria} categoriaId={categoriaItem.id}/>
+                        </Link>
                         <BotaoRemover onClick={ExcluirCategoria} categoriaId={categoriaItem.id}/>
                     </div>
                 </div>

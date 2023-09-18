@@ -11,7 +11,7 @@ export default function PaginaCriar() {
 
   return (
     <>
-    {/* <Cabecalho>Criar Categoria</Cabecalho> */}
+    <Cabecalho>Criar Categoria</Cabecalho>
     <Container>
       <FormCriarCategoria onCategoriaCriada={() => navigate('/listagem')}/>
     </Container>

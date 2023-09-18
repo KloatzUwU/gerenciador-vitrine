@@ -1,8 +1,13 @@
 import { Button } from 'react-bootstrap'
 
-export default function BotaoEditar() {
+interface BotaoEditarProps {
+  onClick: (id: number) => void
+  categoriaId: number
+}
+
+export default function BotaoEditar({onClick, categoriaId}: BotaoEditarProps) {
   return (
-    <Button style={{marginRight: '3px'}} size='sm' variant="dark">Editar</Button>
+    <Button onClick={() => onClick(categoriaId)} style={{marginRight: '3px'}} size='sm' variant="dark">Editar</Button>
     // Criar um unico componente de botao, passando sua classe para identificar sua funçao
   )
 }
