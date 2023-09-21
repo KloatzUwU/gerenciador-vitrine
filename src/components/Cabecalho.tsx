@@ -22,11 +22,11 @@ export default function Cabecalho({ children }: CabecalhoProps) {
         <Link to='/'>
             <Button style={{backgroundColor: '#A42A04', borderColor: '#A42A04', fontWeight: 'bold'}}>Home</Button>
         </Link>
-        <Link to='/listagem'>
+        <Link to='/listagemCategoria'>
             <Button style={{backgroundColor: '#A42A04', borderColor: '#A42A04', fontWeight: 'bold'}}>Listar Categorias</Button>
         </Link>
-        <Link to='/criar'>
-            <Button style={{backgroundColor: '#A42A04', borderColor: '#A42A04',fontWeight: 'bold'}}>Criar Categorias</Button>
+        <Link to='/listagemSubCategoria'>
+            <Button style={{backgroundColor: '#A42A04', borderColor: '#A42A04',fontWeight: 'bold'}}>Listar SubCategorias</Button>
         </Link>
         
         </div>

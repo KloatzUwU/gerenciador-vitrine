@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap'
-
+import editIcon from '../assets/editIcon.png'
 interface BotaoEditarProps {
   onClick: (id: number) => void
   categoriaId: number
@@ -7,6 +7,10 @@ interface BotaoEditarProps {
 
 export default function BotaoEditar({onClick, categoriaId}: BotaoEditarProps) {
   return (
-    <Button onClick={() => onClick(categoriaId)} style={{marginRight: '3px'}} size='sm' variant="dark">Editar</Button>
+    <>
+    <img src={editIcon} alt="Icone de Editar" />
+    <Button onClick={() => onClick(categoriaId)} style={{border: 'none', backgroundColor: 'white', color: 'black', fontWeight: 'bold'}} size='sm'>Editar</Button>
+    </>
+    
   )
 }

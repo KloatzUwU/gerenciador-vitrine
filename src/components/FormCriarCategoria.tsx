@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import BotaoCriar from './BotaoCriar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import BotaoCancelar from './BotaoCancelar';
 
 interface FormCriarCategoriaProps {
     onCategoriaCriada: () => void;
@@ -72,33 +73,39 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
     }
 
     return (
-        <Form noValidate validated={validated} onSubmit={handleSubmit}> 
+        <Form noValidate validated={validated} onSubmit={handleSubmit} > 
             <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh'}}>
-                <Col md={4} style={{border: 'dashed', padding: '30px', borderColor: '#FA8072', justifyContent: 'center', marginBottom: '250px'}}>
+                <Col md={4} style={{border: 'dashed', padding: '50px', borderColor: '#FA8072', justifyContent: 'center', marginBottom: '250px'}}>
                     <h3 style={{textAlign: 'center', marginBottom: '15px'}} >Criar Categoria</h3>
                     <Form.Group controlId="validationCustom01">
-                        <FloatingLabel
-                            controlId="floatingInput"
-                            label="Nome da Categoria"
-                            className="mb-3"
-                        >
+                        <Form.Label>
+                            Nome da Categoria
+                        </Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Nome da Categoria"
+                                placeholder="Categoria"
                                 required
                                 value={nome}
                                 onChange={MudancaNomeAndAlias}
+                                onFocus={(e) => {
+                                    e.target.style.border = '2px solid #353935';  
+                                    e.target.style.boxShadow = '0 0 0px';
+                                  }}
+                                  onBlur={(e) => {
+                                    e.target.style.border = '1px solid #ced4da'; 
+                                    e.target.style.boxShadow = 'none';
+                                  }}
                             />
                             <Form.Control.Feedback 
                                 type='invalid'
                             >
                                 Preencha o Nome da Categoria!
                             </Form.Control.Feedback>
-                        </FloatingLabel>
+                        
                     </Form.Group>
                     <div style={{marginTop: '15px', display: 'flex', justifyContent: 'center'}}>
-                    <Link to='/listagem'>
-                    <Button style={{marginRight: '20px'}}  variant='outline-danger'>Cancelar</Button>
+                    <Link to='/listagemCategoria'>
+                        <BotaoCancelar>Cancelar</BotaoCancelar>
                     </Link>
                     <BotaoCriar >Criar</BotaoCriar>
                     </div>

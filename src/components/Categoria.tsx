@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
 import BotaoRemover from './BotaoRemover';
 import BotaoEditar from './BotaoEditar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
 
 interface CategoriaItem {
     id: number;
@@ -35,8 +37,48 @@ export default function Categoria() {
     }
 
     return (
-        <>
-            <div style={{ display: 'flex', justifyContent: 'space-between', border: 'groove', borderRadius: '10px', marginBottom: '8px', paddingTop: '5px', paddingBottom: '7px' }}>
+        <div style={{  justifyContent: 'center', paddingTop: '30px'}}>
+            <Table responsive striped bordered hover size='sm'>
+            <thead style={{textAlign: 'center'}}>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            Alias
+                        </th>
+                        <th>
+                            Ações
+                        </th>
+                    </tr>
+                </thead>
+            {categoria.map(categoriaItem => (    
+                <tbody key={categoriaItem.id} style={{textAlign: 'center'}}>
+                    <tr>
+                        <td>{categoriaItem.id}</td>
+                        <td>{categoriaItem.name}</td>
+                        <td>{categoriaItem.alias}</td>
+                        <td style={{display: 'flex', justifyContent: 'space-around'}}>
+                        
+                        <Link to={`/editarCategoria/${categoriaItem.id}`}>
+                            <BotaoEditar onClick={EditarCategoria} categoriaId={categoriaItem.id} />
+                        </Link>
+                        <Link to='/listagemCategoria'>
+                            <BotaoRemover onClick={ExcluirCategoria} categoriaId={categoriaItem.id} />
+                        </Link>
+                        </td>
+                    </tr>
+                </tbody>
+            ))}
+            </Table>
+        </div>
+    );
+}
+
+{/* <div style={{ display: 'flex', justifyContent: 'space-between', border: 'groove', borderRadius: '10px', marginBottom: '8px', paddingTop: '5px', paddingBottom: '7px' }}>
                 <div
                     style={{ paddingRight: '0px', fontSize: '20px', paddingLeft: '20px' }}
                 >
@@ -77,14 +119,11 @@ export default function Categoria() {
                     </div>
 
                     <div style={{ paddingRight: '12px' }}>
-                        <Link to={`/editar/${categoriaItem.id}`}>
+                        <Link to={`/editarCategoria/${categoriaItem.id}`}>
                             <BotaoEditar onClick={EditarCategoria} categoriaId={categoriaItem.id} />
                         </Link>
                         <BotaoRemover onClick={ExcluirCategoria} categoriaId={categoriaItem.id} />
                     </div>
                 </div>
 
-            ))}
-        </>
-    );
-}
+            ))} */}

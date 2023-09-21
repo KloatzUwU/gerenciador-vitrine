@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import { FloatingLabel } from 'react-bootstrap';
 import BotaoCriar from './BotaoCriar';
 import axios from 'axios';
+import BotaoCancelar from './BotaoCancelar';
 
 interface Categoria {
     id: number;
@@ -104,33 +105,38 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
         <>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-                    <Col md={4} style={{ border: 'dashed', padding: '30px', borderColor: '#FA8072', justifyContent: 'center', marginBottom: '250px' }}>
-                        <h3 style={{ textAlign: 'center', marginBottom: '15px' }} >Editar Categoria: {nome}</h3>
+                    <Col md={4} style={{ border: 'dashed', padding: '50px', borderColor: '#FA8072', justifyContent: 'center', marginBottom: '250px' }}>
+                        <h3 style={{ textAlign: 'center', marginBottom: '15px' }} >Editar Categoria</h3>
                         <Form.Group controlId="validationCustom01">
-                            <FloatingLabel
-                                controlId="floatingInput"
-                                label="Nome da Categoria"
-                                className="mb-3"
-                            >
+                        <Form.Label>
+                            Edite o nome da Categoria
+                        </Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="Nome da Categoria"
+                                    placeholder={nome}
                                     required
                                     value={nomeEditado}
                                     onChange={EditarNomeAndAlias}
+                                    onFocus={(e) => {
+                                        e.target.style.border = '2px solid #353935';  
+                                        e.target.style.boxShadow = '0 0 0px';
+                                      }}
+                                      onBlur={(e) => {
+                                        e.target.style.border = '1px solid #ced4da'; 
+                                        e.target.style.boxShadow = 'none';
+                                      }}
                                 />
                                 <Form.Control.Feedback
                                     type='invalid'
                                 >
                                     Edite o Nome da Categoria!
                                 </Form.Control.Feedback>
-                            </FloatingLabel>
                         </Form.Group>
                         <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'center' }}>
-                            <Link to='/listagem'>
-                                <Button style={{ marginRight: '20px' }} variant='outline-danger'>Cancelar</Button>
+                            <Link to='/listagemCategoria'>
+                                <BotaoCancelar>Cancelar</BotaoCancelar>
                             </Link>
-                            <BotaoCriar >Editar</BotaoCriar>
+                            <BotaoCriar>Editar</BotaoCriar>
                         </div>
                     </Col>
                 </Row>
