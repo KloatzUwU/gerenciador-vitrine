@@ -16,7 +16,7 @@ export default function Cabecalho({ children }: CabecalhoProps) {
             style={{color: 'white', fontWeight: 'bold'}} 
             
         >
-            <h3>CRUD Vitrine CasaPark</h3>
+            <h3>Gerenciador Vitrine</h3>
         </Navbar.Brand>
         <div >
         <Link to='/'>

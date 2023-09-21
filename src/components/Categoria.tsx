@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Col, Row } from 'react-bootstrap';
+import { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import BotaoRemover from './BotaoRemover';
 import BotaoEditar from './BotaoEditar';
@@ -26,31 +25,34 @@ export default function Categoria() {
     }, []);
 
     function ExcluirCategoria(id: number) {
-        axios.delete(`http://64.226.114.207:3334/categories/${id}`)
+        const categoriaParaExcluir = categoria.find(categoriaItem => categoriaItem.id === id);
 
-        setCategoria(categoria.filter(categoriaItem => categoriaItem.id !== id))
+        const resposta = window.confirm(`Você tem certeza que deseja excluir a categoria ${categoriaParaExcluir?.name}?`)
+
+        if(resposta){
+            axios.delete(`http://64.226.114.207:3334/categories/${id}`)
+
+            setCategoria(categoria.filter(categoriaItem => categoriaItem.id !== id))
+        }
     }
 
-    function EditarCategoria(id: number) {
-        console.log(id);
-
-    }
+    
 
     return (
         <div style={{  justifyContent: 'center', paddingTop: '30px'}}>
             <Table responsive striped bordered hover size='sm'>
             <thead style={{textAlign: 'center'}}>
                     <tr>
-                        <th>
+                        <th style={{width: '30px'}}>
                             ID
                         </th>
-                        <th>
+                        <th style={{width: '150px'}}>
                             Nome
                         </th>
-                        <th>
+                        <th style={{width: '150px'}}>
                             Alias
                         </th>
-                        <th>
+                        <th style={{width: '50px'}}>
                             Ações
                         </th>
                     </tr>
@@ -61,10 +63,9 @@ export default function Categoria() {
                         <td>{categoriaItem.id}</td>
                         <td>{categoriaItem.name}</td>
                         <td>{categoriaItem.alias}</td>
-                        <td style={{display: 'flex', justifyContent: 'space-around'}}>
-                        
-                        <Link to={`/editarCategoria/${categoriaItem.id}`}>
-                            <BotaoEditar onClick={EditarCategoria} categoriaId={categoriaItem.id} />
+                        <td>
+                        <Link to={`/editarCategoria/${categoriaItem.id}`} style={{paddingRight: '20px'}}>
+                            <BotaoEditar/>
                         </Link>
                         <Link to='/listagemCategoria'>
                             <BotaoRemover onClick={ExcluirCategoria} categoriaId={categoriaItem.id} />
@@ -77,53 +78,3 @@ export default function Categoria() {
         </div>
     );
 }
-
-{/* <div style={{ display: 'flex', justifyContent: 'space-between', border: 'groove', borderRadius: '10px', marginBottom: '8px', paddingTop: '5px', paddingBottom: '7px' }}>
-                <div
-                    style={{ paddingRight: '0px', fontSize: '20px', paddingLeft: '20px' }}
-                >
-                    Id
-                </div>
-                <div
-                    style={{ paddingRight: '0px', fontSize: '20px', paddingLeft: '0px' }}
-                >
-                    Nome
-                </div>
-                <div
-                    style={{ paddingRight: '50px', fontSize: '20px', paddingLeft: '0px' }}
-                >
-                    Alias
-                </div>
-                <div
-                    style={{ paddingRight: '40px', fontSize: '20px', paddingLeft: '0px' }}
-                >
-                    Ações
-                </div>
-            </div>
-            {categoria.map(categoriaItem => (
-                <div style={{ display: 'flex', justifyContent: 'space-between', border: 'groove', borderRadius: '10px', marginBottom: '8px', paddingTop: '5px', paddingBottom: '7px' }} key={categoriaItem.id}>
-                    <div
-                        style={{ paddingRight: '20px', fontSize: '20px', paddingLeft: '20px' }}
-                    >
-                        {categoriaItem.id}
-                    </div>
-                    <div
-                        style={{ paddingRight: '20px', fontSize: '20px' }}
-                    >
-                        {categoriaItem.name}
-                    </div>
-                    <div
-                        style={{ paddingRight: '20px', fontSize: '20px' }}
-                    >
-                        {categoriaItem.alias}
-                    </div>
-
-                    <div style={{ paddingRight: '12px' }}>
-                        <Link to={`/editarCategoria/${categoriaItem.id}`}>
-                            <BotaoEditar onClick={EditarCategoria} categoriaId={categoriaItem.id} />
-                        </Link>
-                        <BotaoRemover onClick={ExcluirCategoria} categoriaId={categoriaItem.id} />
-                    </div>
-                </div>
-
-            ))} */}

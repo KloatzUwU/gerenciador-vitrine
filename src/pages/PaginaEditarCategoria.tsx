@@ -1,4 +1,3 @@
-import React from 'react'
 import FormEditarCategoria from '../components/FormEditarCategoria'
 import Cabecalho from '../components/Cabecalho'
 import { useNavigate } from 'react-router-dom'

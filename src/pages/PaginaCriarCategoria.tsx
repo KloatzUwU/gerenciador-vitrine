@@ -1,4 +1,3 @@
-import React from 'react'
 import Cabecalho from '../components/Cabecalho'
 import FormCriarCategoria from '../components/FormCriarCategoria'
 import { Container } from 'react-bootstrap'

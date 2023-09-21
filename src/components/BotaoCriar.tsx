@@ -8,16 +8,20 @@ interface BotaoCriarProps {
 export default function BotaoCriar({ children, size }: BotaoCriarProps) {
   const [hovered, setHovered] = useState(false); 
 
+  const estilo = {
+    transition: 'background-color 0.3s, color 0.3s',
+    borderColor: 'black',
+    backgroundColor: hovered ? 'white' : 'black',
+    color: hovered ? 'black' : 'white'
+  };
+
   return (
     <Button
       type="submit"
-      variant={hovered ? 'dark' : 'outline-dark'} 
       size={size}
       onMouseEnter={() => setHovered(true)} 
       onMouseLeave={() => setHovered(false)} 
-      style={{
-        transition: 'background-color 0.3s, color 0.3s'
-      }}
+      style={estilo}
     >
       {children}
     </Button>
