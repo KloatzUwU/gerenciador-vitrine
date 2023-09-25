@@ -68,7 +68,7 @@ export default function Categoria() {
                             <BotaoEditar/>
                         </Link>
                         <Link to='/listagemCategoria'>
-                            <BotaoRemover onClick={ExcluirCategoria} categoriaId={categoriaItem.id} />
+                            <BotaoRemover onClick={ExcluirCategoria} Id={categoriaItem.id} />
                         </Link>
                         </td>
                     </tr>
