@@ -1,0 +1,30 @@
+.Botoes {
+    color: white;
+    font-weight: bold;
+    padding-right: 25px;
+}
+
+.Botoes:hover {
+    font-weight: bold;
+    color: #353935;
+    transition: 0.3s;
+}
+
+.NavBar {
+    background-color: #A42A04;
+}
+
+.NavBarTexto {
+    color: white;
+    font-weight: bold;
+}
+ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Link {
+    text-decoration: none;
+}

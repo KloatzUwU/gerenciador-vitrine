@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import BotaoEditar from './BotaoEditar';
-import BotaoRemover from './BotaoRemover';
+import BotaoEditar from '../BotaoEditar';
+import BotaoRemover from '../BotaoRemover';
 import { Link } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
+import './SubCategoria.css'
 
 interface SubCategoriaItem {
     name: string;
@@ -62,36 +63,36 @@ export default function SubCategoria() {
       }
 
   return (
-    <div style={{  justifyContent: 'center', paddingTop: '30px'}}>
+    <div className='Container'>
             <Table responsive striped bordered hover size='sm'>
-            <thead style={{textAlign: 'center'}}>
+            <thead className='thead'>
                     <tr>
-                        <th style={{width: '30px'}}>
+                        <th className='id'>
                             ID
                         </th>
-                        <th style={{width: '150px'}}>
+                        <th className='ConteudoPrincipal'>
                             Nome
                         </th>
-                        <th style={{width: '150px'}}>
+                        <th className='ConteudoPrincipal'>
                             Alias
                         </th>
-                        <th style={{width: '150px'}}>
+                        <th className='ConteudoPrincipal'>
                             Categoria
                         </th>
-                        <th style={{width: '50px'}}>
+                        <th className='acoes'>
                             Ações
                         </th>
                     </tr>
                 </thead>
             {subCategoria.map(SubCategoriaItem => (    
-                <tbody key={SubCategoriaItem.id} style={{textAlign: 'center'}}>
+                <tbody key={SubCategoriaItem.id} className='tbody'>
                     <tr>
                         <td>{SubCategoriaItem.id}</td>
                         <td>{SubCategoriaItem.name}</td>
                         <td>{SubCategoriaItem.alias}</td>
                         <td>{RetornaNomeCategoria([SubCategoriaItem.id])}</td>
                         <td>
-                        <Link to={`/editarSubCategoria/${SubCategoriaItem.id}`} style={{paddingRight: '20px'}}>
+                        <Link to={`/editarSubCategoria/${SubCategoriaItem.id}`} className='BotaoEditar'>
                             <BotaoEditar/>
                         </Link>
                         <Link to='/listagemSubCategoria'>

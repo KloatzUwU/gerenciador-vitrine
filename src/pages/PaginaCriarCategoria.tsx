@@ -10,7 +10,7 @@ export default function PaginaCriarCategoria() {
 
   return (
     <>
-    <Cabecalho>Criar Categoria</Cabecalho>
+    <Cabecalho/>
     <Container>
       <FormCriarCategoria onCategoriaCriada={() => navigate('/listagemCategoria')}/>
     </Container>
