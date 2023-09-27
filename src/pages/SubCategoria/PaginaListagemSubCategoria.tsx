@@ -1,8 +1,8 @@
 import React from 'react'
-import Cabecalho from '../components/Cabecalho'
-import SubCategoria from '../components/SubCategoria'
+import Cabecalho from '../../components/Cabecalho'
+import SubCategoria from '../../components/SubCategoria'
 import { Col, Container, Row } from 'react-bootstrap'
-import BotaoCriar from '../components/BotaoCriar'
+import BotaoCriar from '../../components/BotaoCriar'
 import { Link } from 'react-router-dom'
 
 export default function PaginaListagemSubCategoria() {

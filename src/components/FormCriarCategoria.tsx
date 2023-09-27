@@ -1,6 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import BotaoCriar from './BotaoCriar';
 import axios from 'axios';

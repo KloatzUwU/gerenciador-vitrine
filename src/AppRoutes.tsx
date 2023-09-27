@@ -4,9 +4,9 @@ import PaginaListagemCategoria from './pages/PaginaListagemCategoria';
 import PaginaPadrao from './pages/PaginaPadrao';
 import PaginaCriarCategoria from './pages/PaginaCriarCategoria';
 import PaginaEditarCategoria from './pages/PaginaEditarCategoria';
-import PaginaListagemSubCategoria from './pages/PaginaListagemSubCategoria';
-import PaginaCriarSubCategoria from './pages/PaginaCriarSubCategoria';
-import PaginaEditarSubCategoria from './pages/PaginaEditarSubCategoria';
+import PaginaListagemSubCategoria from './pages/SubCategoria/PaginaListagemSubCategoria';
+import PaginaCriarSubCategoria from './pages/SubCategoria/PaginaCriarSubCategoria';
+import PaginaEditarSubCategoria from './pages/SubCategoria/PaginaEditarSubCategoria';
 
 function AppRoutes() {
   return (
