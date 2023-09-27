@@ -1,4 +1,3 @@
-import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
@@ -8,10 +7,8 @@ export default function Cabecalho() {
   return (
     <Navbar className='NavBar'>
         <Container className='mx-auto'>
-          <Navbar.Brand 
-            className='NavBarTexto' 
-          >
-            <h3>Gerenciador Vitrine</h3>
+          <Navbar.Brand>
+            <h3 className='NavBarTexto'>Gerenciador Vitrine</h3>
           </Navbar.Brand>
           <ul>
             <Link className='Link' to='/'>

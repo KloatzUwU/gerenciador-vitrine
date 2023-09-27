@@ -2,6 +2,7 @@
     color: white;
     font-weight: bold;
     padding-right: 25px;
+    transition: 0.3s;
 }
 
 .Botoes:hover {

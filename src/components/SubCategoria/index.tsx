@@ -10,18 +10,13 @@ interface SubCategoriaItem {
     name: string;
     alias: string;
     id: number;
+    category_id: number;
+    category_name: string;
 }
-
-interface CategoriaComSubCategoria{
-    name: string;
-    alias: string;
-    id: number;
-    subcategories: SubCategoriaItem[]
-} 
 
 export default function SubCategoria() {
     const [subCategoria, setSubCategoria] = useState<SubCategoriaItem[]>([])
-    const [CategoriaComSubCategoria, setCategoriaComSubCategoria] = useState<CategoriaComSubCategoria[]>([])
+
 
     useEffect(() => {
         axios.get('http://64.226.114.207:3334/subcategories')
@@ -34,32 +29,16 @@ export default function SubCategoria() {
           });
       }, []);
 
-      useEffect(() => {
-        axios.get('http://64.226.114.207:3334/categoriesWithSubcategories/')
-          .then(res => {
-            const resultado: CategoriaComSubCategoria[] = res.data; 
-            setCategoriaComSubCategoria(ListaCategoriasComSubcategorias(resultado))
-          })
-          .catch(error => {
-            console.error('Erro ao buscar dados:', error)
-          });
-      }, []);
+      function ExcluirSubCategoria(id: number){
+        const categoriaParaExcluir = subCategoria.find(SubCategoriaItem => SubCategoriaItem.id === id);
 
+        const resposta = window.confirm(`Você tem certeza que deseja excluir a subcategoria ${categoriaParaExcluir?.name}?`)
 
-      function ExcluirSubCategoria(){
-        
-      }
+        if(resposta){
+            axios.delete(`http://64.226.114.207:3334/subcategories/${id}`)
 
-      function ListaCategoriasComSubcategorias(categorias: CategoriaComSubCategoria[]){
-        const categoriasComSubcategorias = categorias.filter(categoriaItem => categoriaItem.subcategories.length > 0 ? categoriaItem : '')
-        return categoriasComSubcategorias
-      }
-
-      function RetornaNomeCategoria(id: number[]){
-        const categoria = CategoriaComSubCategoria.filter((categoriaItem) => 
-            categoriaItem.subcategories.some((subcategoria) => id.includes(subcategoria.id))
-        );
-        return categoria[0]?.name
+            setSubCategoria(subCategoria.filter(SubCategoriaItem => SubCategoriaItem.id !== id))
+        }
       }
 
   return (
@@ -90,7 +69,7 @@ export default function SubCategoria() {
                         <td>{SubCategoriaItem.id}</td>
                         <td>{SubCategoriaItem.name}</td>
                         <td>{SubCategoriaItem.alias}</td>
-                        <td>{RetornaNomeCategoria([SubCategoriaItem.id])}</td>
+                        <td>{SubCategoriaItem.category_name}</td>
                         <td>
                         <Link to={`/editarSubCategoria/${SubCategoriaItem.id}`} className='BotaoEditar'>
                             <BotaoEditar/>
