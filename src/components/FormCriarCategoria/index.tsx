@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import BotaoCriar from './BotaoCriar';
+import BotaoCriar from '../BotaoCriar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import BotaoCancelar from './BotaoCancelar';
+import BotaoCancelar from '../BotaoCancelar';
+import './FormCriarCategoria.css'
 
 interface FormCriarCategoriaProps {
     onCategoriaCriada: () => void;
@@ -74,9 +74,9 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
 
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit} > 
-            <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh'}}>
-                <Col md={4} style={{border: 'dashed', padding: '50px', borderColor: '#FA8072', justifyContent: 'center', marginBottom: '250px'}}>
-                    <h3 style={{textAlign: 'center', marginBottom: '15px'}} >Criar Categoria</h3>
+            <Row className="Row">
+                <Col md={4} className='Col'>
+                    <h3>Criar Categoria</h3>
                     <Form.Group controlId="validationCustom01">
                         <Form.Label>
                             Nome da Categoria
@@ -103,7 +103,7 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
                             </Form.Control.Feedback>
                         
                     </Form.Group>
-                    <div style={{marginTop: '15px', display: 'flex', justifyContent: 'center'}}>
+                    <div className='ContainerBotoes'>
                     <Link to='/listagemCategoria'>
                         <BotaoCancelar>Cancelar</BotaoCancelar>
                     </Link>

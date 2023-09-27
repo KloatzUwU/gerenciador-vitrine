@@ -5,7 +5,6 @@ import PaginaPadrao from './pages/Padrao/PaginaPadrao';
 import PaginaCriarCategoria from './pages/Categoria/PaginaCriarCategoria';
 import PaginaEditarCategoria from './pages/Categoria/PaginaEditarCategoria';
 
-
 function AppRoutes() {
   return (
     <BrowserRouter>
