@@ -1,5 +1,5 @@
-import Cabecalho from '../components/Cabecalho'
-import FormCriarCategoria from '../components/FormCriarCategoria'
+import Cabecalho from '../../components/Cabecalho'
+import FormCriarCategoria from '../../components/FormCriarCategoria'
 import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
