@@ -1,6 +1,6 @@
-import Categoria from '../components/Categoria';
-import Cabecalho from '../components/Cabecalho';
-import BotaoCriar from '../components/BotaoCriar';
+import Categoria from '../../components/Categoria';
+import Cabecalho from '../../components/Cabecalho';
+import BotaoCriar from '../../components/BotaoCriar';
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 

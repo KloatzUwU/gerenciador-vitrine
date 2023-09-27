@@ -3,9 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import BotaoCriar from './BotaoCriar';
+import BotaoCriar from '../BotaoCriar';
 import axios from 'axios';
-import BotaoCancelar from './BotaoCancelar';
+import BotaoCancelar from '../BotaoCancelar';
+import './FormEditarCategoria.css'
 
 interface Categoria {
     id: number;
@@ -99,9 +100,9 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
     return (
         <>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Row className="justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-                    <Col md={4} style={{ border: 'dashed', padding: '50px', borderColor: '#FA8072', justifyContent: 'center', marginBottom: '250px' }}>
-                        <h3 style={{ textAlign: 'center', marginBottom: '15px' }} >Editar Categoria</h3>
+                <Row className="Row">
+                    <Col md={4} className='Col'>
+                        <h3>Editar Categoria</h3>
                         <Form.Group controlId="validationCustom01">
                         <Form.Label>
                             Edite o nome da Categoria
@@ -127,7 +128,7 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
                                     Edite o Nome da Categoria!
                                 </Form.Control.Feedback>
                         </Form.Group>
-                        <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'center' }}>
+                        <div className='ContainerBotoes'>
                             <Link to='/listagemCategoria'>
                                 <BotaoCancelar>Cancelar</BotaoCancelar>
                             </Link>

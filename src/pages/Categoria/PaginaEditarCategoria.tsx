@@ -1,5 +1,5 @@
-import FormEditarCategoria from '../components/FormEditarCategoria'
-import Cabecalho from '../components/Cabecalho'
+import FormEditarCategoria from '../../components/FormEditarCategoria'
+import Cabecalho from '../../components/Cabecalho'
 import { useNavigate } from 'react-router-dom'
 
 export default function PaginaEditarCategoria() {

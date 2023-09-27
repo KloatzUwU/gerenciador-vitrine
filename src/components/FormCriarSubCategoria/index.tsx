@@ -4,6 +4,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BotaoCancelar from '../BotaoCancelar';
 import BotaoCriar from '../BotaoCriar';
+import './FormCriarSubCategoria.css'
 
 interface FormEditarSubCategoriaProps {
     onSubCategoriaCriada: () => void

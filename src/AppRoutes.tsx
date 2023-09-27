@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PaginaListagemCategoria from './pages/PaginaListagemCategoria';
-import PaginaPadrao from './pages/PaginaPadrao';
-import PaginaCriarCategoria from './pages/PaginaCriarCategoria';
-import PaginaEditarCategoria from './pages/PaginaEditarCategoria';
+import PaginaListagemCategoria from './pages/Categoria/PaginaListagemCategoria';
+import PaginaPadrao from './pages/Padrao/PaginaPadrao';
+import PaginaCriarCategoria from './pages/Categoria/PaginaCriarCategoria';
+import PaginaEditarCategoria from './pages/Categoria/PaginaEditarCategoria';
 import PaginaListagemSubCategoria from './pages/SubCategoria/PaginaListagemSubCategoria';
 import PaginaCriarSubCategoria from './pages/SubCategoria/PaginaCriarSubCategoria';
 import PaginaEditarSubCategoria from './pages/SubCategoria/PaginaEditarSubCategoria';

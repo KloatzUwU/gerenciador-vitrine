@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
-import BotaoRemover from './BotaoRemover';
-import BotaoEditar from './BotaoEditar';
+import BotaoRemover from '../BotaoRemover';
+import BotaoEditar from '../BotaoEditar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import './Categoria.css'
 
 interface CategoriaItem {
     id: number;
@@ -39,32 +39,32 @@ export default function Categoria() {
     
 
     return (
-        <div style={{  justifyContent: 'center', paddingTop: '30px'}}>
+        <div className='Container'>
             <Table responsive striped bordered hover size='sm'>
-            <thead style={{textAlign: 'center'}}>
+            <thead className='thead'>
                     <tr>
-                        <th style={{width: '30px'}}>
+                        <th className='id'>
                             ID
                         </th>
-                        <th style={{width: '150px'}}>
+                        <th className='ConteudoPrincipal'>
                             Nome
                         </th>
-                        <th style={{width: '150px'}}>
+                        <th className='ConteudoPrincipal'>
                             Alias
                         </th>
-                        <th style={{width: '50px'}}>
+                        <th className='acoes'>
                             Ações
                         </th>
                     </tr>
                 </thead>
             {categoria.map(categoriaItem => (    
-                <tbody key={categoriaItem.id} style={{textAlign: 'center'}}>
+                <tbody key={categoriaItem.id} className='tbody'>
                     <tr>
                         <td>{categoriaItem.id}</td>
                         <td>{categoriaItem.name}</td>
                         <td>{categoriaItem.alias}</td>
                         <td>
-                        <Link to={`/editarCategoria/${categoriaItem.id}`} style={{paddingRight: '20px'}}>
+                        <Link to={`/editarCategoria/${categoriaItem.id}`} className='BotaoEditar'>
                             <BotaoEditar/>
                         </Link>
                         <Link to='/listagemCategoria'>

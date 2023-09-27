@@ -1,0 +1,28 @@
+.Container {
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.thead {
+    text-align: center;
+}
+
+.id {
+    width: 30px;
+}
+
+.ConteudoPrincipal {
+    width: 150px;
+}
+
+.acoes {
+    width: 50px;
+}
+
+.tbody {
+    text-align: center;
+}
+
+.BotaoEditar {
+    padding-right: 20px;
+}
