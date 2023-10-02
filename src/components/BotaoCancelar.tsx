@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
-import './BotaoCancelar.css'
 
 interface BotaoCancelarProps {
     children: string
@@ -13,7 +12,10 @@ export default function BotaoCancelar({children}:BotaoCancelarProps) {
       variant={hovered ? 'danger' : 'outline-danger'}
       onMouseEnter={() => setHovered(true)} 
       onMouseLeave={() => setHovered(false)} 
-      className='BotaoCancelar'
+      style={{
+        marginRight: '20px',
+        transition: 'background-color 0.3s, color 0.3s'
+      }}
     >
         {children}
     </Button>

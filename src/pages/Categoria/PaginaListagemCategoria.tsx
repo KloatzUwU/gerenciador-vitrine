@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default function PaginaListagemCategoria() {
   return (
     <div>
-      <Cabecalho/>
+      <Cabecalho>Gerenciador de Categorias</Cabecalho>
       <Container >
         <Categoria/>
           <Row>

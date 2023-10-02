@@ -8,7 +8,7 @@ export default function PaginaEditarCategoria() {
 
   return (
     <>
-      <Cabecalho/>
+      <Cabecalho>a</Cabecalho>
       <FormEditarCategoria onCategoriaEditada={() => navigate('/listagemCategoria')}/>
     </>
   )
