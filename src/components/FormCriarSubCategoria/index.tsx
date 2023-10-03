@@ -36,7 +36,7 @@ export default function FormCriarSubCategoria({ onSubCategoriaCriada }: FormEdit
     };
 
     useEffect(() => {
-        axios.get(`http://64.226.114.207:3334/categories`)
+        axios.get(`http://64.226.114.207:3000/categories`)
             .then(res => {
                 const resultado: Categoria[] = res.data;
                 setCategoria(resultado);
@@ -79,7 +79,7 @@ export default function FormCriarSubCategoria({ onSubCategoriaCriada }: FormEdit
                     "categoryId": categoriaId,
                 };
 
-                await axios.post('http://64.226.114.207:3334/subcategories', SubCategoria)
+                await axios.post('http://64.226.114.207:3000/subcategories', SubCategoria)
 
                 SetNome('');
                 SetAlias('');

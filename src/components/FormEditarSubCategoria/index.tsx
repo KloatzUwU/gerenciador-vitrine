@@ -50,7 +50,7 @@ export default function FormEditarSubCategoria({ onSubCategoriaEditada }: FormEd
     };
 
     useEffect(() => {
-        axios.get(`http://64.226.114.207:3334/subcategories/${id}`)
+        axios.get(`http://64.226.114.207:3000/subcategories/${id}`)
             .then(res => {
                 const resultado: SubCategoria[] = res.data;
                 setSubCategoria(resultado);
@@ -64,7 +64,7 @@ export default function FormEditarSubCategoria({ onSubCategoriaEditada }: FormEd
     }, [id]);
 
     useEffect(() => {
-        axios.get(`http://64.226.114.207:3334/categories`)
+        axios.get(`http://64.226.114.207:3000/categories`)
             .then(res => {
                 const resultado: Categoria[] = res.data;
                 setCategoria(resultado);
@@ -108,7 +108,7 @@ export default function FormEditarSubCategoria({ onSubCategoriaEditada }: FormEd
                 };
                 console.log(categoriaId);
                 
-                await axios.put(`http://64.226.114.207:3334/subcategories/${id}`, Subcategoria)
+                await axios.put(`http://64.226.114.207:3000/subcategories/${id}`, Subcategoria)
 
                 SetNomeEditado('');
                 onSubCategoriaEditada()

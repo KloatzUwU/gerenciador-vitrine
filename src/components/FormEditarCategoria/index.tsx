@@ -41,7 +41,7 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
     };
 
     useEffect(() => {
-        fetch(`http://64.226.114.207:3334/categories/${id}`)
+        fetch(`http://64.226.114.207:3000/categories/${id}`)
             .then(res => res.json())
             .then((resultado: Categoria[]) => {
                 setCategoria(resultado);
@@ -83,7 +83,7 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
                     "alias": aliasEditado
                 };
 
-                await axios.put(`http://64.226.114.207:3334/categories/${id}`, categoria)
+                await axios.put(`http://64.226.114.207:3000/categories/${id}`, categoria)
 
                 SetNomeEditado('');
                 onCategoriaEditada()

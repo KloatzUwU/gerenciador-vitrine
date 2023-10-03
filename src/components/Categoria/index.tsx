@@ -17,7 +17,7 @@ export default function Categoria() {
     const [categoria, setCategoria] = useState<CategoriaItem[]>([])
 
     useEffect(() => {
-        fetch('http://64.226.114.207:3334/categories')
+        fetch('http://64.226.114.207:3000/categories')
             .then(res => res.json())
             .then((resultado: CategoriaItem[]) => {
                 setCategoria(resultado);
@@ -30,7 +30,7 @@ export default function Categoria() {
         const resposta = window.confirm(`Você tem certeza que deseja excluir a categoria ${categoriaParaExcluir?.name}?`)
 
         if(resposta){
-            axios.delete(`http://64.226.114.207:3334/categories/${id}`)
+            axios.delete(`http://64.226.114.207:3000/categories/${id}`)
 
             setCategoria(categoria.filter(categoriaItem => categoriaItem.id !== id))
         }

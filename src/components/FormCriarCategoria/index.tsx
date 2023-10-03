@@ -61,7 +61,7 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
                     "alias": alias
                 };
     
-                await axios.post('http://64.226.114.207:3334/categories', categoria)
+                await axios.post('http://64.226.114.207:3000/categories', categoria)
     
                 SetNome('');
                 SetAlias('');

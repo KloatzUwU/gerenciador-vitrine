@@ -19,7 +19,7 @@ export default function SubCategoria() {
 
 
     useEffect(() => {
-        axios.get('http://64.226.114.207:3334/subcategories')
+        axios.get('http://64.226.114.207:3000/subcategories')
           .then(res => {
             const resultado: SubCategoriaItem[] = res.data; 
             setSubCategoria(resultado)
@@ -35,7 +35,7 @@ export default function SubCategoria() {
         const resposta = window.confirm(`Você tem certeza que deseja excluir a subcategoria ${categoriaParaExcluir?.name}?`)
 
         if(resposta){
-            axios.delete(`http://64.226.114.207:3334/subcategories/${id}`)
+            axios.delete(`http://64.226.114.207:3000/subcategories/${id}`)
 
             setSubCategoria(subCategoria.filter(SubCategoriaItem => SubCategoriaItem.id !== id))
         }
