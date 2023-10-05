@@ -16,6 +16,12 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
     const [nome, SetNome] = useState('');
     const [alias, SetAlias] = useState('');
     const [validated, setValidated] = useState(false);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0] || null;
+        setSelectedFile(file);
+      };
 
     const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
@@ -56,13 +62,17 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
             
         } else {
             try {
-                const categoria = {
-                    "name": nome,
-                    "alias": alias
-                };
+                const formData = new FormData();
+
+                formData.append('name', nome);
+                formData.append('alias', alias);
+                
+                if (selectedFile) {
+                  formData.append('image', selectedFile);
+                }
     
-                await axios.post('http://64.226.114.207:3000/categories', categoria)
-    
+                await axios.post('http://64.226.114.207:3000/categories', formData)
+            
                 SetNome('');
                 SetAlias('');
                 onCategoriaCriada()
@@ -101,7 +111,22 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
                             >
                                 Preencha o Nome da Categoria!
                             </Form.Control.Feedback>
-                        
+                            <Form.Label>Foto da Categoria</Form.Label>
+                            <Form.Control
+                                type="file"
+                                accept=".jpg, .jpeg, .png, .gif"
+                                onChange={handleFileChange}
+                                onFocus={(e) => {
+                                    e.target.style.border = '2px solid #353935';
+                                    e.target.style.boxShadow = '0 0 0px';
+                                }}
+                                onBlur={(e) => {
+                                    e.target.style.border = '1px solid #ced4da';
+                                    e.target.style.boxShadow = 'none';
+                                }}
+                                id="validationCustom04"
+                                required
+                            />
                     </Form.Group>
                     <div className='ContainerBotoes'>
                     <Link to='/listagemCategoria'>

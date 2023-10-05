@@ -10,11 +10,15 @@ interface CategoriaItem {
     id: number;
     name: string;
     alias: string;
+    image: string;
 }
 
 export default function Categoria() {
 
     const [categoria, setCategoria] = useState<CategoriaItem[]>([])
+
+    let link = 'http://64.226.114.207:3000/'
+    let parteARemover = 'http://localhost:3000/'
 
     useEffect(() => {
         fetch('http://64.226.114.207:3000/categories')
@@ -53,23 +57,33 @@ export default function Categoria() {
                             Alias
                         </th>
                         <th className='acoes'>
+                            Imagem
+                        </th>
+                        <th className='acoes'>
                             Ações
                         </th>
                     </tr>
                 </thead>
-            {categoria.map(categoriaItem => (    
+            {categoria.map(categoriaItem => (  
                 <tbody key={categoriaItem.id} className='tbody'>
                     <tr>
                         <td>{categoriaItem.id}</td>
                         <td>{categoriaItem.name}</td>
                         <td>{categoriaItem.alias}</td>
                         <td>
-                        <Link to={`/editarCategoria/${categoriaItem.id}`} className='BotaoEditar'>
-                            <BotaoEditar/>
-                        </Link>
-                        <Link to='/listagemCategoria'>
-                            <BotaoRemover onClick={ExcluirCategoria} Id={categoriaItem.id} />
-                        </Link>
+                            <img 
+                                src={`http://64.226.114.207:3000/${categoriaItem.image.replace(new RegExp(parteARemover, 'g'), '')}`} 
+                                alt="imagem da categoria" 
+                                style={{width: '35px'}}
+                            />
+                        </td>
+                        <td>
+                            <Link to={`/editarCategoria/${categoriaItem.id}`} className='BotaoEditar'>
+                                <BotaoEditar/>
+                            </Link>
+                            <Link to='/listagemCategoria'>
+                                <BotaoRemover onClick={ExcluirCategoria} Id={categoriaItem.id} />
+                            </Link>
                         </td>
                     </tr>
                 </tbody>
