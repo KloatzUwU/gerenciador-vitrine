@@ -20,6 +20,9 @@ export default function Cabecalho() {
             <Link className='Link' to='/listagemSubCategoria'>
                 <li className='Botoes'>Listar SubCategorias</li>
             </Link>
+            <Link className='Link' to='/listagemSegmento'>
+                <li className='Botoes'>Listar Segmentos</li>
+            </Link>
           </ul>
         </Container>
     </Navbar>

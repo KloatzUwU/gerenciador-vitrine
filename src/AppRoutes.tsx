@@ -7,6 +7,9 @@ import PaginaEditarCategoria from './pages/Categoria/PaginaEditarCategoria';
 import PaginaListagemSubCategoria from './pages/SubCategoria/PaginaListagemSubCategoria';
 import PaginaCriarSubCategoria from './pages/SubCategoria/PaginaCriarSubCategoria';
 import PaginaEditarSubCategoria from './pages/SubCategoria/PaginaEditarSubCategoria';
+import PaginaListagemSegmento from './pages/Segmento/PaginaListagemSegmento';
+import PaginaCriarSegmento from './pages/Segmento/PaginaCriarSegmento';
+import PaginaEditarSegmento from './pages/Segmento/PaginaEditarSegmento';
 
 function AppRoutes() {
   return (
@@ -19,6 +22,9 @@ function AppRoutes() {
       <Route path='listagemSubCategoria' element={<PaginaListagemSubCategoria/>}/>
       <Route path='criarSubCategoria' element={<PaginaCriarSubCategoria/>}/>
       <Route path='editarSubCategoria/:id' element={<PaginaEditarSubCategoria/>}/>
+      <Route path='listagemSegmento' element={<PaginaListagemSegmento/>}/>
+      <Route path='criarSegmento' element={<PaginaCriarSegmento/>}/>
+      <Route path='editarSegmento/:id' element={<PaginaEditarSegmento/>}/>
     </Routes>
     </BrowserRouter>
   );
