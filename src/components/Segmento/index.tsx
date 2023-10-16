@@ -14,6 +14,7 @@ interface SegmentoItem {
 export default function Segmento() {
 
     const [segmento, setSegmento] = useState<SegmentoItem[]>([])
+    const [vinculoLoja, setVinculoLoja] = useState(false)
 
     useEffect(() => {
         fetch('http://64.226.114.207:3000/segment')
@@ -24,15 +25,31 @@ export default function Segmento() {
     }, []);
 
     function ExcluirSegmento(id: number) {
+
         const segmentoParaExcluir = segmento.find(segmentoItem => segmentoItem.id === id);
 
         const resposta = window.confirm(`Você tem certeza que deseja excluir o segmento ${segmentoParaExcluir?.name}?`)
 
-        if(resposta){
-            axios.delete(`http://64.226.114.207:3000/segment/${id}`)
-
-            setSegmento(segmento.filter(segmentoItem => segmentoItem.id !== id))
-        }
+        
+        axios.get(`http://64.226.114.207:3000/storesBySegment/${segmentoParaExcluir?.id}`)
+            .then((res) => {
+                return res.data;
+            })
+            .then((data) => {           
+                if(data[0]?.segment_name === segmentoParaExcluir?.name){
+                    alert('não foi possivel excluir este segmento pois ele está vinculado a uma loja')
+                } else {
+                    if(resposta && vinculoLoja === false){
+                            axios.delete(`http://64.226.114.207:3000/segment/${id}`)
+                
+                            setSegmento(segmento.filter(segmentoItem => segmentoItem.id !== id))
+                            setVinculoLoja(false)
+                        }
+                }
+            })
+            .catch((error) => {
+                console.error('Ocorreu um erro:', error);
+            });
     }    
 
     return (
