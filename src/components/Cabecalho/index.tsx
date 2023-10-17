@@ -23,6 +23,9 @@ export default function Cabecalho() {
             <Link className='Link' to='/listagemSegmento'>
                 <li className='Botoes'>Listar Segmentos</li>
             </Link>
+            <Link className='Link' to='/listagemLoja'>
+                <li className='Botoes'>Listar Lojas</li>
+            </Link>
           </ul>
         </Container>
     </Navbar>
