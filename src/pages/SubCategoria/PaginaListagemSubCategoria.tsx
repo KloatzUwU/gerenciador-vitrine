@@ -12,12 +12,12 @@ export default function PaginaListagemSubCategoria() {
       <Container>
         <SubCategoria/>
         <Row>
-            <Col className="text-center">
-              <Link to='/criarSubCategoria'>
-                <BotaoCriar>Criar SubCategoria</BotaoCriar>
-              </Link> 
-            </Col>
-          </Row>
+          <Col className="text-center">
+            <Link to='/criarSubCategoria'>
+              <BotaoCriar>Criar SubCategoria</BotaoCriar>
+            </Link>
+          </Col>
+        </Row>
       </Container>
     </>
   )

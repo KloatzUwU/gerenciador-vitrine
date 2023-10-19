@@ -1,18 +1,16 @@
-.Col {
+.content-col {
     border: dashed;
     padding: 50px;
     border-color: #FA8072;
-    justify-content: center;
     margin-bottom: 250px;
 }
 
-.Row {
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+.content-row { 
+    padding-top: 150px;
+    min-height: auto;
 }
 
-.ContainerBotoes {
+.container-botoes {
     margin-top: 15px;
     display: flex;
     justify-content: center;

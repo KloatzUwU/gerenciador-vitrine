@@ -92,8 +92,8 @@ export default function FormCriarSubCategoria({ onSubCategoriaCriada }: FormEdit
 
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
-            <Row className="Row">
-                <Col md={4} className="Col">
+            <Row className="d-flex justify-content-center d-flex align-items-center content-row">
+                <Col md={4} className="content-col">
                     <h3>Criar SubCategoria</h3>
                     <Form.Group controlId="validationCustom01">
                         <Form.Label>
@@ -142,7 +142,7 @@ export default function FormCriarSubCategoria({ onSubCategoriaCriada }: FormEdit
                             ))}
                         </Form.Select>
                     </Form.Group>
-                    <div className="ContainerBotoes">
+                    <div className="container-botoes">
                         <Link to='/listagemSubCategoria'>
                             <BotaoCancelar>Cancelar</BotaoCancelar>
                         </Link>

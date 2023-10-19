@@ -11,15 +11,15 @@ import PaginaEditarSubCategoria from './pages/SubCategoria/PaginaEditarSubCatego
 function AppRoutes() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route index element={<PaginaPadrao/>}/>
-      <Route path='listagemCategoria' element={<PaginaListagemCategoria/>}/>
-      <Route path='criarCategoria' element={<PaginaCriarCategoria/>}/>
-      <Route path='editarCategoria/:id' element={<PaginaEditarCategoria/>}/>
-      <Route path='listagemSubCategoria' element={<PaginaListagemSubCategoria/>}/>
-      <Route path='criarSubCategoria' element={<PaginaCriarSubCategoria/>}/>
-      <Route path='editarSubCategoria/:id' element={<PaginaEditarSubCategoria/>}/>
-    </Routes>
+      <Routes>
+        <Route index element={<PaginaPadrao/>}/>
+        <Route path='listagemCategoria' element={<PaginaListagemCategoria/>}/>
+        <Route path='criarCategoria' element={<PaginaCriarCategoria/>}/>
+        <Route path='editarCategoria/:id' element={<PaginaEditarCategoria/>}/>
+        <Route path='listagemSubCategoria' element={<PaginaListagemSubCategoria/>}/>
+        <Route path='criarSubCategoria' element={<PaginaCriarSubCategoria/>}/>
+        <Route path='editarSubCategoria/:id' element={<PaginaEditarSubCategoria/>}/>
+      </Routes>
     </BrowserRouter>
   );
 }

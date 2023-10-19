@@ -3,19 +3,19 @@ import { Button } from 'react-bootstrap'
 import './BotaoCancelar.css'
 
 interface BotaoCancelarProps {
-    children: string
+  children: string
 }
 
-export default function BotaoCancelar({children}:BotaoCancelarProps) {
-    const [hovered, setHovered] = useState(false);
+export default function BotaoCancelar({ children }: BotaoCancelarProps) {
+  const [hovered, setHovered] = useState(false);
   return (
-    <Button   
+    <Button
       variant={hovered ? 'danger' : 'outline-danger'}
-      onMouseEnter={() => setHovered(true)} 
-      onMouseLeave={() => setHovered(false)} 
-      className='BotaoCancelar'
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className='botao-cancelar'
     >
-        {children}
+      {children}
     </Button>
   )
 }

@@ -5,23 +5,23 @@ import './Cabecalho.css'
 
 export default function Cabecalho() {
   return (
-    <Navbar className='NavBar'>
-        <Container className='mx-auto'>
-          <Navbar.Brand>
-            <h3 className='NavBarTexto'>Gerenciador Vitrine</h3>
-          </Navbar.Brand>
-          <ul>
-            <Link className='Link' to='/'>
-                <li className='Botoes'>Home</li>
-            </Link>
-            <Link className='Link' to='/listagemCategoria'>
-                <li className='Botoes'>Listar Categorias</li>
-            </Link>
-            <Link className='Link' to='/listagemSubCategoria'>
-                <li className='Botoes'>Listar SubCategorias</li>
-            </Link>
-          </ul>
-        </Container>
+    <Navbar className='nav-bar'>
+      <Container className='mx-auto'>
+        <Navbar.Brand>
+          <h3 className='nav-bar-texto'>Gerenciador Vitrine</h3>
+        </Navbar.Brand>
+        <ul>
+          <Link className='link' to='/'>
+            <li className='botoes'>Home</li>
+          </Link>
+          <Link className='link' to='/listagemCategoria'>
+            <li className='botoes'>Listar Categorias</li>
+          </Link>
+          <Link className='link' to='/listagemSubCategoria'>
+            <li className='botoes'>Listar SubCategorias</li>
+          </Link>
+        </ul>
+      </Container>
     </Navbar>
   )
 }

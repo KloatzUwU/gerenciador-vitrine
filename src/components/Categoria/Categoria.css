@@ -1,17 +1,12 @@
-.Container {
-    justify-content: center;
+.table {
     padding-top: 30px;
-}
-
-.thead {
-    text-align: center;
 }
 
 .id {
     width: 30px;
 }
 
-.ConteudoPrincipal {
+.conteudo-principal {
     width: 150px;
 }
 
@@ -19,10 +14,10 @@
     width: 50px;
 }
 
-.tbody {
-    text-align: center;
+.botao-editar {
+    padding-right: 20px;
 }
 
-.BotaoEditar {
-    padding-right: 20px;
+.imagem {
+    width: 35px;
 }
