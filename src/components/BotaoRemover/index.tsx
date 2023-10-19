@@ -8,7 +8,7 @@ interface BotaoRemoverProps {
 export default function BotaoRemover({ onClick, Id }: BotaoRemoverProps) {
   return (
     <>
-      <img src={removeIcon} alt="Remover Icon" onClick={() => onClick(Id)}/>
+      <img src={removeIcon} alt="Remover Icon" onClick={() => onClick(Id)} />
     </>
   )
 }

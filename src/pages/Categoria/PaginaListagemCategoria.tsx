@@ -8,15 +8,15 @@ export default function PaginaListagemCategoria() {
   return (
     <div>
       <Cabecalho/>
-      <Container >
+      <Container>
         <Categoria/>
-          <Row>
-            <Col className="text-center">
-              <Link to='/criarCategoria'>
-                <BotaoCriar>Criar Categoria</BotaoCriar>
-              </Link> 
-            </Col>
-          </Row>
+        <Row>
+          <Col className="text-center">
+            <Link to='/criarCategoria'>
+              <BotaoCriar>Criar Categoria</BotaoCriar>
+            </Link>
+          </Col>
+        </Row>
       </Container>
     </div>
   )

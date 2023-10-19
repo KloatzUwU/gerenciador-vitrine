@@ -1,27 +1,27 @@
-import { ChangeEvent, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
-import BotaoCriar from '../BotaoCriar';
 import axios from 'axios';
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BotaoCancelar from '../BotaoCancelar';
-import './FormCriarCategoria.css'
+import BotaoCriar from '../BotaoCriar';
+import './FormCriarSubCategoria.css'
 
-interface FormCriarCategoriaProps {
-    onCategoriaCriada: () => void;
+interface FormEditarSubCategoriaProps {
+    onSubCategoriaCriada: () => void
 }
 
-export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCategoriaProps) {
+interface Categoria {
+    id: number;
+    name: string;
+    alias: string;
+}
 
+export default function FormCriarSubCategoria({ onSubCategoriaCriada }: FormEditarSubCategoriaProps) {
     const [nome, SetNome] = useState('');
     const [alias, SetAlias] = useState('');
     const [validated, setValidated] = useState(false);
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0] || null;
-        setSelectedFile(file);
-    };
+    const [categoria, setCategoria] = useState<Categoria[]>([])
+    const [categoriaId, setCategoriaId] = useState<number | undefined>(undefined)
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
@@ -34,6 +34,17 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
         setValidated(true);
         PostCategoria();
     };
+
+    useEffect(() => {
+        axios.get(`http://64.226.114.207:3000/categories`)
+            .then(res => {
+                const resultado: Categoria[] = res.data;
+                setCategoria(resultado);
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados:', error);
+            });
+    }, []);
 
     const mapaAcentos: Record<string, string> = {
         'á': 'a', 'à': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a',
@@ -62,20 +73,17 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
 
         } else {
             try {
-                const formData = new FormData();
+                const SubCategoria = {
+                    "name": nome,
+                    "alias": alias,
+                    "categoryId": categoriaId,
+                };
 
-                formData.append('name', nome);
-                formData.append('alias', alias);
-
-                if (selectedFile) {
-                    formData.append('image', selectedFile);
-                }
-
-                await axios.post('http://64.226.114.207:3000/categories', formData)
+                await axios.post('http://64.226.114.207:3000/subcategories', SubCategoria)
 
                 SetNome('');
                 SetAlias('');
-                onCategoriaCriada()
+                onSubCategoriaCriada()
             } catch (error) {
                 console.error('erro', error)
             }
@@ -86,14 +94,14 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
             <Row className="d-flex justify-content-center d-flex align-items-center content-row">
                 <Col md={4} className="content-col">
-                    <h3>Criar Categoria</h3>
+                    <h3>Criar SubCategoria</h3>
                     <Form.Group controlId="validationCustom01">
                         <Form.Label>
-                            Nome da Categoria
+                            Nome da SubCategoria
                         </Form.Label>
                         <Form.Control
                             type="text"
-                            placeholder="Categoria"
+                            placeholder="SubCategoria"
                             required
                             value={nome}
                             onChange={MudancaNomeAndAlias}
@@ -109,13 +117,14 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
                         <Form.Control.Feedback
                             type='invalid'
                         >
-                            Preencha o Nome da Categoria!
+                            Preencha o Nome da SubCategoria!
                         </Form.Control.Feedback>
-                        <Form.Label>Foto da Categoria</Form.Label>
-                        <Form.Control
-                            type="file"
-                            accept=".jpg, .jpeg, .png, .gif"
-                            onChange={handleFileChange}
+                        <Form.Label>
+                            Selecione a Categoria
+                        </Form.Label>
+                        <Form.Select
+                            value={categoriaId}
+                            onChange={(e) => setCategoriaId(Number(e.target.value))}
                             onFocus={(e) => {
                                 e.target.style.border = '2px solid #353935';
                                 e.target.style.boxShadow = '0 0 0px';
@@ -126,16 +135,22 @@ export default function FormCriarCategoria({ onCategoriaCriada }: FormCriarCateg
                             }}
                             id="validationCustom04"
                             required
-                        />
+                        >
+                            <option selected disabled></option>
+                            {categoria.map(categoriaItem => (
+                                <option key={categoriaItem.id} value={categoriaItem.id}>{categoriaItem.name}</option>
+                            ))}
+                        </Form.Select>
                     </Form.Group>
-                    <div className='container-botoes'>
-                        <Link to='/listagemCategoria'>
+                    <div className="container-botoes">
+                        <Link to='/listagemSubCategoria'>
                             <BotaoCancelar>Cancelar</BotaoCancelar>
                         </Link>
-                        <BotaoCriar>Criar</BotaoCriar>
+                        <BotaoCriar >Criar</BotaoCriar>
                     </div>
                 </Col>
             </Row>
         </Form>
+
     );
 }

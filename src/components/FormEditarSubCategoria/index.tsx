@@ -6,7 +6,14 @@ import Row from 'react-bootstrap/Row';
 import BotaoCriar from '../BotaoCriar';
 import axios from 'axios';
 import BotaoCancelar from '../BotaoCancelar';
-import './FormEditarCategoria.css'
+import './FormEditarSubCategoria.css'
+
+interface SubCategoria {
+    id: number;
+    name: string;
+    alias: string;
+    category_id: number;
+}
 
 interface Categoria {
     id: number;
@@ -14,48 +21,58 @@ interface Categoria {
     alias: string;
 }
 
-interface FormEditarCategoriaProps {
-    onCategoriaEditada: () => void
+interface FormEditarSubCategoriaProps {
+    onSubCategoriaEditada: () => void
 }
 
-export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCategoriaProps) {
+export default function FormEditarSubCategoria({ onSubCategoriaEditada }: FormEditarSubCategoriaProps) {
     const { id } = useParams();
 
     const [nomeEditado, SetNomeEditado] = useState('');
     const [aliasEditado, SetAliasEditado] = useState('');
     const [nome, SetNome] = useState('');
 
-    const [categoria, setCategoria] = useState<Categoria[]>([]);
+    const [categoria, setCategoria] = useState<Categoria[]>([])
+    const [SubCategoria, setSubCategoria] = useState<SubCategoria[]>([]);
+    const [categoriaId, setCategoriaId] = useState<number | undefined>(undefined)
     const [validated, setValidated] = useState(false);
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0] || null;
-        setSelectedFile(file);
-    };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
-        if (form.checkValidity() === false) {
+        if (form.checkValidity() === false || categoriaId === undefined) {
             event.preventDefault();
             event.stopPropagation();
         }
 
         event.preventDefault()
         setValidated(true);
-        PutCategoria()
+        PutSubCategoria()
     };
 
     useEffect(() => {
-        fetch(`http://64.226.114.207:3000/categories/${id}`)
-            .then(res => res.json())
-            .then((resultado: Categoria[]) => {
-                setCategoria(resultado);
+        axios.get(`http://64.226.114.207:3000/subcategories/${id}`)
+            .then(res => {
+                const resultado: SubCategoria[] = res.data;
+                setSubCategoria(resultado);
                 if (resultado.length > 0) {
-                    SetNome(resultado[0].name)
+                    SetNome(resultado[0].name);
                 }
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados:', error);
             });
     }, [id]);
+
+    useEffect(() => {
+        axios.get(`http://64.226.114.207:3000/categories`)
+            .then(res => {
+                const resultado: Categoria[] = res.data;
+                setCategoria(resultado);
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados:', error);
+            });
+    }, []);
 
     const mapaAcentos: Record<string, string> = {
         'á': 'a', 'à': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a',
@@ -79,43 +96,40 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
         SetAliasEditado(VerificaNome.replace(/\s+/g, '').replace(/\d+/g, '').replace(/[çáàâãäéèêëíìîïóòôõöúùûüÇÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜ]/gi, (match) => mapaAcentos[match]).replace(/(?![\w\s@#$!])[^\d]/g, ''))
     }
 
-    async function PutCategoria() {
-        if (nomeEditado === '') {
+    async function PutSubCategoria() {
+        if (nomeEditado === '' || categoriaId === undefined) {
 
         } else {
             try {
-                const formData = new FormData();
+                const Subcategoria = {
+                    "name": nomeEditado,
+                    "alias": aliasEditado,
+                    "categoryId": categoriaId
+                };
+                console.log(categoriaId);
 
-                formData.append('name', nomeEditado);
-                formData.append('alias', aliasEditado);
-
-                if (selectedFile) {
-                    formData.append('image', selectedFile);
-                }
-
-                await axios.put(`http://64.226.114.207:3000/categories/${id}`, formData)
+                await axios.put(`http://64.226.114.207:3000/subcategories/${id}`, Subcategoria)
 
                 SetNomeEditado('');
-                onCategoriaEditada()
+                onSubCategoriaEditada()
             } catch (error) {
                 console.error('erro', error)
             }
         }
     }
 
-
-    if (categoria.length === 0) {
+    if (SubCategoria.length === 0) {
         return <div>Carregando...</div>;
     }
     return (
         <>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Row className="d-flex justify-content-center d-flex align-items-center content-row">
+                <Row className='d-flex justify-content-center d-flex align-items-center content-row'>
                     <Col md={4} className='content-col'>
-                        <h3>Editar Categoria</h3>
+                        <h3>Editar SubCategoria</h3>
                         <Form.Group controlId="validationCustom01">
                             <Form.Label>
-                                Edite o nome da Categoria
+                                Edite o nome da SubCategoria
                             </Form.Label>
                             <Form.Control
                                 type="text"
@@ -135,13 +149,14 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
                             <Form.Control.Feedback
                                 type='invalid'
                             >
-                                Edite o Nome da Categoria!
+                                Edite o Nome da SubCategoria!
                             </Form.Control.Feedback>
-                            <Form.Label>Foto da Categoria</Form.Label>
-                            <Form.Control
-                                type="file"
-                                accept=".jpg, .jpeg, .png, .gif"
-                                onChange={handleFileChange}
+                            <Form.Label>
+                                Selecione a Categoria
+                            </Form.Label>
+                            <Form.Select
+                                value={categoriaId}
+                                onChange={(e) => setCategoriaId(Number(e.target.value))}
                                 onFocus={(e) => {
                                     e.target.style.border = '2px solid #353935';
                                     e.target.style.boxShadow = '0 0 0px';
@@ -152,10 +167,15 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
                                 }}
                                 id="validationCustom04"
                                 required
-                            />
+                            >
+                                <option selected disabled></option>
+                                {categoria.map(categoriaItem => (
+                                    <option key={categoriaItem.id} value={categoriaItem.id}>{categoriaItem.name}</option>
+                                ))}
+                            </Form.Select>
                         </Form.Group>
                         <div className='container-botoes'>
-                            <Link to='/listagemCategoria'>
+                            <Link to='/listagemSubCategoria'>
                                 <BotaoCancelar>Cancelar</BotaoCancelar>
                             </Link>
                             <BotaoCriar>Editar</BotaoCriar>

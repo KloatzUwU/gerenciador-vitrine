@@ -1,5 +1,5 @@
 import Cabecalho from '../../components/Cabecalho'
-import FormCriarCategoria from '../../components/FormCriarCategoria'
+import FormCriarSubCategoria from '../../components/FormCriarSubCategoria';
 import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ export default function PaginaCriarCategoria() {
     <>
       <Cabecalho/>
       <Container>
-        <FormCriarCategoria onCategoriaCriada={() => navigate('/listagemCategoria')}/>
+        <FormCriarSubCategoria onSubCategoriaCriada={() => navigate('/listagemSubCategoria')}/>
       </Container>
     </>
   )
