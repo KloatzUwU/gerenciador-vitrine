@@ -9,10 +9,10 @@ export default function PaginaCriarSegmento() {
 
   return (
     <>
-    <Cabecalho/>
-    <Container>
-      <FormCriarSegmento onSegmentoCriado={() => navigate('/listagemSegmento')}/>
-    </Container>
+      <Cabecalho/>
+      <Container>
+        <FormCriarSegmento onSegmentoCriado={() => navigate('/listagemSegmento')}/>
+      </Container>
     </>
   )
 }

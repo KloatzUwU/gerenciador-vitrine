@@ -82,8 +82,8 @@ export default function FormEditarSegmento({ onSegmentoEditado }: FormEditarSegm
     return (
         <>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Row className="Row">
-                    <Col md={4} className='Col'>
+                <Row className="d-flex justify-content-center d-flex align-items-center content-row">
+                    <Col md={4} className='content-col'>
                         <h3>Editar Segmento</h3>
                         <Form.Group controlId="validationCustom01">
                         <Form.Label>
@@ -110,7 +110,7 @@ export default function FormEditarSegmento({ onSegmentoEditado }: FormEditarSegm
                                     Edite o Nome do Segmento!
                                 </Form.Control.Feedback>
                         </Form.Group>
-                        <div className='ContainerBotoes'>
+                        <div className='container-botoes'>
                             <Link to='/listagemSegmento'>
                                 <BotaoCancelar>Cancelar</BotaoCancelar>
                             </Link>
