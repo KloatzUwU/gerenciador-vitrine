@@ -1,0 +1,19 @@
+.table {
+    padding-top: 30px;
+}
+
+.id {
+    width: 30px;
+}
+
+.conteudo-principal {
+    width: 150px;
+}
+
+.acoes {
+    width: 50px;
+}
+
+.botao-editar {
+    padding-right: 20px;
+}
