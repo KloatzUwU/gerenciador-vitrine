@@ -29,10 +29,10 @@ export default function SubCategoria() {
             });
     }, []);
 
-    function ExcluirSubCategoria(id: number) {
-        const categoriaParaExcluir = subCategoria.find(SubCategoriaItem => SubCategoriaItem.id === id);
+      function ExcluirSubCategoria(id: number){
+        const SubcategoriaParaExcluir = subCategoria.find(SubCategoriaItem => SubCategoriaItem.id === id);
 
-        const resposta = window.confirm(`Você tem certeza que deseja excluir a subcategoria ${categoriaParaExcluir?.name}?`)
+        const resposta = window.confirm(`Você tem certeza que deseja excluir a subcategoria ${SubcategoriaParaExcluir?.name}?`)
 
         if (resposta) {
             axios.delete(`http://64.226.114.207:3000/subcategories/${id}`)
