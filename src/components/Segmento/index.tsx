@@ -5,6 +5,7 @@ import BotaoEditar from '../BotaoEditar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Segmento.css'
+import { Container } from 'react-bootstrap';
 
 interface SegmentoItem {
     id: number;
@@ -30,7 +31,6 @@ export default function Segmento() {
 
         const resposta = window.confirm(`Você tem certeza que deseja excluir o segmento ${segmentoParaExcluir?.name}?`)
 
-        
         axios.get(`http://64.226.114.207:3000/storesBySegment/${segmentoParaExcluir?.id}`)
             .then((res) => {
                 return res.data;
@@ -53,14 +53,14 @@ export default function Segmento() {
     }    
 
     return (
-        <div className='Container'>
+        <Container className='table'>
             <Table responsive striped bordered hover size='sm'>
-            <thead className='thead'>
+                <thead className='text-center'>
                     <tr>
-                        <th className='id'>
+                       <th className='id'>
                             ID
                         </th>
-                        <th className='ConteudoPrincipal'>
+                        <th className='conteudo-principal'>
                             Nome
                         </th>
                         <th className='acoes'>
@@ -69,12 +69,12 @@ export default function Segmento() {
                     </tr>
                 </thead>
             {segmento.map(segmentoItem => (  
-                <tbody key={segmentoItem.id} className='tbody'>
+                <tbody key={segmentoItem.id} className='text-center'>
                     <tr>
                         <td>{segmentoItem.id}</td>
                         <td>{segmentoItem.name}</td>
                         <td>
-                            <Link to={`/editarSegmento/${segmentoItem.id}`} className='BotaoEditar'>
+                            <Link to={`/editarSegmento/${segmentoItem.id}`} className='botao-editar'>
                                 <BotaoEditar/>
                             </Link>
                             <Link to='/listagemSegmento'>
@@ -85,6 +85,6 @@ export default function Segmento() {
                 </tbody>
             ))}
             </Table>
-        </div>
+        </Container>
     );
 }

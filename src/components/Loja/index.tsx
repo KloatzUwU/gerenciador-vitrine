@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import './Loja.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -48,20 +48,20 @@ export default function Loja() {
       }
 
   return (
-    <div className='Container'>
+    <Container className='table'>
             <Table responsive striped bordered hover size='sm'>
-            <thead className='thead'>
+            <thead className='text-center'>
                     <tr>
                         <th className='id'>
                             ID
                         </th>
-                        <th className='ConteudoPrincipal'>
+                        <th className='conteudo-principal'>
                             Nome
                         </th>
-                        <th className='ConteudoPrincipal'>
+                        <th className='conteudo-principal'>
                             Alias
                         </th>
-                        <th className='ConteudoPrincipal'>
+                        <th className='conteudo-principal'>
                             Segmento
                         </th>
                         <th className='acoes'>
@@ -70,14 +70,14 @@ export default function Loja() {
                     </tr>
                 </thead>
             {lojas.map(LojaItem => (    
-                <tbody key={LojaItem.id} className='tbody'>
+                <tbody key={LojaItem.id} className='text-center'>
                     <tr>
                         <td>{LojaItem.id}</td>
                         <td>{LojaItem.name}</td>
                         <td>{LojaItem.alias}</td>
                         <td>{LojaItem.segment_name}</td>
                         <td>
-                        <Link to={`/editarLoja/${LojaItem.id}`} className='BotaoEditar'>
+                        <Link to={`/editarLoja/${LojaItem.id}`} className='botao-editar'>
                             <BotaoEditar/>
                         </Link>
                         <Link to='/listagemLoja'>
@@ -88,6 +88,6 @@ export default function Loja() {
                 </tbody>
             ))}
             </Table>
-        </div>
+        </Container>
   )
 }

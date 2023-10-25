@@ -8,15 +8,15 @@ export default function PaginaListagemSegmento() {
   return (
     <div>
       <Cabecalho/>
-      <Container >
+      <Container>
         <Segmento/>
-          <Row>
-            <Col className="text-center">
-              <Link to='/criarSegmento'>
-                <BotaoCriar>Criar Segmento</BotaoCriar>
-              </Link> 
-            </Col>
-          </Row>
+        <Row>
+          <Col className="text-center">
+            <Link to='/criarSegmento'>
+              <BotaoCriar>Criar Segmento</BotaoCriar>
+            </Link>
+          </Col>
+        </Row>
       </Container>
     </div>
   )

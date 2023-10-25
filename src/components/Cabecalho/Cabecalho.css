@@ -1,21 +1,21 @@
-.Botoes {
+.botoes {
     color: white;
     font-weight: bold;
     padding-right: 25px;
     transition: 0.3s;
 }
 
-.Botoes:hover {
+.botoes:hover {
     font-weight: bold;
     color: #353935;
     transition: 0.3s;
 }
 
-.NavBar {
+.nav-bar {
     background-color: #A42A04;
 }
 
-.NavBarTexto {
+.nav-bar-texto {
     color: white;
     font-weight: bold;
 }
@@ -26,6 +26,6 @@ ul {
     margin: 0;
 }
 
-.Link {
+.link {
     text-decoration: none;
 }

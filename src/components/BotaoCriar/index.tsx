@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import { useState } from 'react'; 
+import { useState } from 'react';
 import './BotaoCriar.css'
 
 interface BotaoCriarProps {
@@ -8,23 +8,22 @@ interface BotaoCriarProps {
 }
 
 export default function BotaoCriar({ children, size }: BotaoCriarProps) {
-  const [hovered, setHovered] = useState(false); 
+  const [hovered, setHovered] = useState(false);
 
   return (
     <Button
       type="submit"
       size={size}
-      onMouseEnter={() => setHovered(true)} 
-      onMouseLeave={() => setHovered(false)} 
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         backgroundColor: hovered ? 'white' : 'black',
         color: hovered ? 'black' : 'white',
         borderColor: 'black'
       }}
-      className='Botao'
+      className='botao'
     >
       {children}
     </Button>
   );
 }
-

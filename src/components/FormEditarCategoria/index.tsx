@@ -32,7 +32,7 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
         setSelectedFile(file);
-      };
+    };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
@@ -88,9 +88,9 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
 
                 formData.append('name', nomeEditado);
                 formData.append('alias', aliasEditado);
-                
+
                 if (selectedFile) {
-                  formData.append('image', selectedFile);
+                    formData.append('image', selectedFile);
                 }
 
                 await axios.put(`http://64.226.114.207:3000/categories/${id}`, formData)
@@ -110,51 +110,51 @@ export default function FormEditarCategoria({ onCategoriaEditada }: FormEditarCa
     return (
         <>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Row className="Row">
-                    <Col md={4} className='Col'>
+                <Row className="d-flex justify-content-center d-flex align-items-center content-row">
+                    <Col md={4} className='content-col'>
                         <h3>Editar Categoria</h3>
                         <Form.Group controlId="validationCustom01">
-                        <Form.Label>
-                            Edite o nome da Categoria
-                        </Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder={nome}
-                                    required
-                                    value={nomeEditado}
-                                    onChange={EditarNomeAndAlias}
-                                    onFocus={(e) => {
-                                        e.target.style.border = '2px solid #353935';  
-                                        e.target.style.boxShadow = '0 0 0px';
-                                      }}
-                                      onBlur={(e) => {
-                                        e.target.style.border = '1px solid #ced4da'; 
-                                        e.target.style.boxShadow = 'none';
-                                      }}
-                                />
-                                <Form.Control.Feedback
-                                    type='invalid'
-                                >
-                                    Edite o Nome da Categoria!
-                                </Form.Control.Feedback>
-                                <Form.Label>Foto da Categoria</Form.Label>
-                                <Form.Control
-                                    type="file"
-                                    accept=".jpg, .jpeg, .png, .gif"
-                                    onChange={handleFileChange}
-                                    onFocus={(e) => {
-                                        e.target.style.border = '2px solid #353935';
-                                        e.target.style.boxShadow = '0 0 0px';
-                                    }}
-                                    onBlur={(e) => {
-                                        e.target.style.border = '1px solid #ced4da';
-                                        e.target.style.boxShadow = 'none';
-                                    }}
-                                    id="validationCustom04"
-                                    required
-                                />
+                            <Form.Label>
+                                Edite o nome da Categoria
+                            </Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder={nome}
+                                required
+                                value={nomeEditado}
+                                onChange={EditarNomeAndAlias}
+                                onFocus={(e) => {
+                                    e.target.style.border = '2px solid #353935';
+                                    e.target.style.boxShadow = '0 0 0px';
+                                }}
+                                onBlur={(e) => {
+                                    e.target.style.border = '1px solid #ced4da';
+                                    e.target.style.boxShadow = 'none';
+                                }}
+                            />
+                            <Form.Control.Feedback
+                                type='invalid'
+                            >
+                                Edite o Nome da Categoria!
+                            </Form.Control.Feedback>
+                            <Form.Label>Foto da Categoria</Form.Label>
+                            <Form.Control
+                                type="file"
+                                accept=".jpg, .jpeg, .png, .gif"
+                                onChange={handleFileChange}
+                                onFocus={(e) => {
+                                    e.target.style.border = '2px solid #353935';
+                                    e.target.style.boxShadow = '0 0 0px';
+                                }}
+                                onBlur={(e) => {
+                                    e.target.style.border = '1px solid #ced4da';
+                                    e.target.style.boxShadow = 'none';
+                                }}
+                                id="validationCustom04"
+                                required
+                            />
                         </Form.Group>
-                        <div className='ContainerBotoes'>
+                        <div className='container-botoes'>
                             <Link to='/listagemCategoria'>
                                 <BotaoCancelar>Cancelar</BotaoCancelar>
                             </Link>

@@ -136,8 +136,8 @@ export default function FormCriarLoja({ onLojaCriada }: FormCriarLojaProps) {
 
     return (
         <Form noValidate validated={validated} onSubmit={handleSubmit} >
-            <Row className="Row">
-                <Col md={4} className='Col'>
+            <Row className="d-flex justify-content-center d-flex align-items-center content-row">
+                <Col md={4} className='content-col'>
                     <h3>Criar Loja</h3>
                     <Form.Group controlId="validationCustom01">
                         <Form.Label>
@@ -304,7 +304,7 @@ export default function FormCriarLoja({ onLojaCriada }: FormCriarLojaProps) {
                                 />
 
                     </Form.Group>
-                    <div className='ContainerBotoes'>
+                    <div className='container-botoes'>
                         <Link to='/listagemLoja'>
                             <BotaoCancelar>Cancelar</BotaoCancelar>
                         </Link>
